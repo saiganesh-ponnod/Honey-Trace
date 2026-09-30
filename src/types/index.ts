@@ -74,6 +74,11 @@ export interface Batch {
   notes?: string;
   recallReason?: string;
   recalledAt?: string;
+  onChainTxHash?: string;
+  onChainBlockNumber?: number;
+  onChainContractAddress?: string;
+  onChainTimestamp?: string;
+  isSyncedToChain?: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -152,6 +157,9 @@ export interface SupplyChainEvent {
   notes?: string;
   prevHash: string;
   eventHash: string;
+  txHash?: string;
+  blockNumber?: number;
+  gasUsed?: number;
 }
 
 export interface SensorReading {
@@ -310,7 +318,21 @@ export interface PublicVerification {
     status: string;
     notes?: string;
     eventHash: string;
+    txHash?: string;
+    blockNumber?: number;
   }[];
+  blockchain?: {
+    isAnchored: boolean;
+    contractAddress: string;
+    networkName: string;
+    chainId: number;
+    anchorTxHash?: string;
+    anchorBlockNumber?: number;
+    anchorTimestamp?: string;
+    latestEventHash?: string;
+    totalOnChainEvents: number;
+    verificationStatus: 'CONFIRMED_ON_CHAIN' | 'PENDING_ANCHOR' | 'UNANCHORED';
+  };
   sensorSummary?: {
     readingCount: number;
     latestTemp: number;
@@ -328,4 +350,53 @@ export interface PublicVerification {
     message: string;
   }[];
   verifiedAt: string;
+}
+
+export type BlockchainMethod =
+  | 'registerBatch'
+  | 'recordProcessing'
+  | 'recordQualityTest'
+  | 'transferCustody'
+  | 'confirmReceipt'
+  | 'recallBatch';
+
+export interface BlockchainTransaction {
+  id: string;
+  hash: string;
+  blockNumber: number;
+  timestamp: string;
+  from: string;
+  to: string;
+  method: BlockchainMethod;
+  batchCode: string;
+  gasUsed: number;
+  gasFeeEth: string;
+  status: 'CONFIRMED' | 'PENDING' | 'FAILED';
+  rawPayload: Record<string, any>;
+}
+
+export interface BlockchainNetworkInfo {
+  name: string;
+  chainId: number;
+  currency: string;
+  contractAddress: string;
+  latestBlock: number;
+  avgBlockTimeSeconds: number;
+  gasPriceGwei: number;
+  isSimulated: boolean;
+}
+
+export interface BlockchainVerificationResult {
+  verified: boolean;
+  batchCode: string;
+  contractAddress: string;
+  onChainStatus: string;
+  currentCustodian: string;
+  eventCount: number;
+  latestEventHash: string;
+  registeredBlock: number;
+  latestBlock: number;
+  anchorTxHash: string;
+  network: string;
+  proofTimestamp: string;
 }
