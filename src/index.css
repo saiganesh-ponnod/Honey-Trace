@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-honey: #d97706;
+    --primary-honey-light: #fef3c7;
+    --primary-honey-dark: #b45309;
+  }
+  
+  body {
+    background-color: #faf8f5;
+    color: #1e293b;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom glassmorphism & light theme cards */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.honey-card {
+  background: #ffffff;
+  border: 1px solid #fef3c7;
+  box-shadow: 0 4px 20px -2px rgba(217, 119, 6, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease-in-out;
+}
+
+.honey-card:hover {
+  border-color: #fde68a;
+  box-shadow: 0 10px 25px -4px rgba(217, 119, 6, 0.09), 0 4px 10px -2px rgba(0, 0, 0, 0.03);
+}
+
+.honey-gradient-bg {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+}
+
+.honey-gradient-text {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fdfaf3;
+}
+::-webkit-scrollbar-thumb {
+  background: #fcd34d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fbbf24;
+}
+
+/* Status glow effects */
+.glow-verified {
+  box-shadow: 0 0 25px -3px rgba(16, 185, 129, 0.3);
+}
+
+.glow-incomplete {
+  box-shadow: 0 0 25px -3px rgba(245, 158, 11, 0.3);
+}
+
+.glow-flagged {
+  box-shadow: 0 0 25px -3px rgba(239, 68, 68, 0.35);
+}
+
+/* Micro-animations */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s infinite ease-in-out;
+}
