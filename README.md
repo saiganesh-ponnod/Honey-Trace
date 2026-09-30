@@ -1,18 +1,33 @@
-# 🍯 HoneyTrace — Farm-to-Bottle Traceability & Verification Platform
+# 🍯 HoneyTrace — Smart India Hackathon 2026 Submission
 
-> **Cryptographic Tamper-Evident Ledger • Real-Time IoT Environmental Telemetry • Authoritative Physicochemical Verification**  
-> *Compliant with FSSAI Gazetted Standards & Codex Alimentarius (Standard 12-1981)*
+### **Problem Statement ID: SIH26021**
+**Domain / Theme:** Agriculture, FoodTech & Rural Development / Smart Automation & Supply Chain  
+**Project Title:** HoneyTrace — End-to-End Cryptographic Traceability, IoT Cold-Chain Telemetry & Quality Verification Platform  
+**Target Beneficiaries:** Tribal & Local Beekeepers (FPOs), Quality Testing Labs, Cold-Chain Logistics, Organic Retailers, Regulatory Authorities (FSSAI), and Consumers.
+
+---
+
+## 🏆 SIH26021 Problem Statement Alignment & Innovation
+
+| SIH26021 Challenge / Need | HoneyTrace Technical Solution | Innovation / Tech Highlight |
+|---|---|---|
+| **1. Origin Authenticity & Anti-Counterfeiting** | Digital apiary registration with geo-tagged GPS coordinates, floral forage classification, and non-guessable batch codes (`HT-YYYY-XXXXXX`). | Unambiguous cryptographic base alphabet preventing clone labels. |
+| **2. Adulteration & Sugar Syrup Blends** | Automated physicochemical boundary validation (Moisture $\le 20\%$, HMF $\le 40\text{ mg/kg}$, Diastase $\ge 8$, EC $\le 0.8\text{ mS/cm}$). | Immediate contradiction detection if a lab reports PASS with out-of-limit sugar metrics. |
+| **3. Tamper-Proof Chain of Custody** | Append-only event ledger anchored with per-batch **SHA-256 hash chains** (`prevHash + eventHash`). | Mathematical proof of custody handover without costly blockchain gas fees. |
+| **4. Cold-Chain & Storage Degradation** | Continuous IoT telemetry stream (ESP32 microcontrollers with temperature, humidity, and weight). | Automated alerts when temperatures exceed $35^\circ\text{C}$ (thermal enzyme breakdown threshold). |
+| **5. Zero-Friction Consumer Verification** | Dynamic QR on jars resolving to mobile-first verification page in $<2\text{ s}$. | **8-Point Verification Checklist** with plain-language explanations & zero app download required. |
+| **6. Regulatory Supervision & Audits** | Real-time administrative triage console, automated anomaly triggers, and immutable audit logs. | Automated detection of transit delays ($>7\text{ days}$), thermal spikes, and custody sequence violations. |
 
 ---
 
 ## 📌 Executive Summary
 
-The global honey industry suffers from widespread **adulteration** (C3/C4 invert sugar syrups, ultra-filtration, excessive heat pasteurization) and **fragmented paper records** where claims of organic single-origin origin cannot be verified.
+The honey supply chain in India faces widespread **adulteration** (C3/C4 invert sugar syrups, rice syrups, ultra-filtration, excessive heat pasteurization) and **fragmented records** where claims of pure forest honey cannot be validated.
 
-**HoneyTrace** is a decentralized-ready, cryptographic traceability web platform that tracks honey across its complete lifecycle:
+**HoneyTrace** establishes an end-to-end trusted digital pipeline:
 $$\text{Beekeeper / Producer} \longrightarrow \text{Quality / Processing Lab} \longrightarrow \text{Cold-Chain Logistics} \longrightarrow \text{Retailer Store} \longrightarrow \text{Consumer}$$
 
-Each honey batch is anchored to a unique, non-guessable cryptographic identifier (`HT-YYYY-XXXXXX`). Every custody handover, processing step, lab test, and IoT sensor reading is written into an immutable, **SHA-256 hash-chained event ledger**. Consumers scan an on-jar QR code to receive a transparent **8-point authenticity verification report** with zero app installation.
+Each honey batch is anchored to an unambiguous identifier. Every harvest, processing step, lab test, and IoT sensor reading is written into an immutable **SHA-256 hash-chained event ledger**. Consumers scan an on-jar QR code to view a transparent **8-point authenticity verification report** on their mobile phone.
 
 ---
 
@@ -32,7 +47,7 @@ flowchart TD
         ESP["📡 ESP32 Hardware Nodes / Simulator\n(Temp, Humidity, Weight, TDS)"]
     end
 
-    subgraph CoreEngine ["HoneyTrace Core Platform Engine"]
+    subgraph CoreEngine ["HoneyTrace Core Platform Engine (SIH26021)"]
         LEDGER["🔗 SHA-256 Hash Chained Event Ledger\n(prevHash + eventType + actor + timestamp)"]
         RULES["⚖️ Physicochemical Limits Engine\n(Moisture, HMF, EC, pH, Diastase)"]
         SAFETY["🚨 Automated Anomaly & Alert Engine\n(Thermal spikes, custody gaps, contradictions)"]
@@ -106,7 +121,7 @@ Configured in `src/config/qualityLimits.ts` in compliance with FSSAI Gazetted Re
 
 ---
 
-## 🧪 Pre-Seeded Evaluator Test Scenarios (1-Click Evaluation)
+## 🧪 Pre-Seeded SIH Evaluator Scenarios (1-Click Evaluation)
 
 The application includes 4 deterministic demo scenarios ready for immediate testing:
 
@@ -119,7 +134,7 @@ The application includes 4 deterministic demo scenarios ready for immediate test
 
 ---
 
-## 🚀 Interactive 13-Step Live Demo Script (PRD §20.2)
+## 🚀 Interactive 13-Step SIH Demo Script (PRD §20.2)
 
 Evaluators can click the **"13-Step Guided Demo"** button in the header bar or follow this evaluation sequence:
 
@@ -207,5 +222,6 @@ npm run preview
 ---
 
 <p align="center">
+  Submitted for <strong>Smart India Hackathon 2026 (SIH PS: SIH26021)</strong><br />
   Made with 🍯 for transparency, food safety, and beekeeper empowerment.
 </p>
